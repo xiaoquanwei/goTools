@@ -2,7 +2,7 @@ package secret
 
 import (
 	"crypto/md5"
-	"fmt"
+	"encoding/hex"
 	"io"
 )
 
@@ -11,5 +11,5 @@ func Md5(str string) string {
 	hasher := md5.New()
 	io.WriteString(hasher, str)
 	hash := hasher.Sum(nil)
-	return fmt.Sprintf("%s", hash)
+	return hex.EncodeToString(hash)
 }
